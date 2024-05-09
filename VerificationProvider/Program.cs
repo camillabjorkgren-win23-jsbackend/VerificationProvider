@@ -13,7 +13,8 @@ var host = new HostBuilder()
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
         services.AddDbContext<DataContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("SqlServer")));
-        services.AddSingleton<IVerificationService, VerificationService>();
+        services.AddScoped<IVerificationService, VerificationService>();
+        services.AddScoped<IVerificationCleanerService, VerificationCleanerService>();
     })
     .Build();
 
@@ -34,7 +35,5 @@ using (var scope = host.Services.CreateScope())
     {
         Debug.WriteLine($"ERROR : VerificationProvider.Program.cs :: {ex.Message}");
     }
-    
 }
-
 host.Run();

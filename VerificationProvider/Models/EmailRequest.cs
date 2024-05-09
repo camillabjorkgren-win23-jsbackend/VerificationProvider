@@ -1,6 +1,4 @@
-﻿using Microsoft.Identity.Client;
-
-namespace VerificationProvider.Models;
+﻿namespace VerificationProvider.Models;
 public class EmailRequest
 {
     public string To { get; set; } = null!;
