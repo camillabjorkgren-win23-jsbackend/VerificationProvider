@@ -33,7 +33,7 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenerateVerificationCode.SaveVerificationRequest() :: {ex.Message}");
+            _logger.LogError($"ERROR : VerificationService.SaveVerificationRequest() :: {ex.Message}");
         }
         return false;
 
@@ -51,7 +51,7 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenerateVerificationCode.UnpackVerificationRequest() :: {ex.Message}");
+            _logger.LogError($"ERROR : VerificationService.UnpackVerificationRequest() :: {ex.Message}");
         }
         return null!;
     }
@@ -60,12 +60,12 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
         try
         {
             var rnd = new Random();
-            var code = rnd.Next(1000000, 999999);
+            var code = rnd.Next(100000, 999999);
             return code.ToString();
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenerateVerificationCode.GenerateVerificationCode() :: {ex.Message}");
+            _logger.LogError($"ERROR : VerificationService.GenerateVerificationCode() :: {ex.Message}");
         }
         return null!;
     }
@@ -115,7 +115,7 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenerateVerificationCode.GenerateEmailRequest() :: {ex.Message}");
+            _logger.LogError($"ERROR : VerificationService.GenerateEmailRequest() :: {ex.Message}");
         }
         return null!;
     }
@@ -132,7 +132,7 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenerateVerificationCode.GenerateServiceBusEmailRequest() :: {ex.Message}");
+            _logger.LogError($"ERROR : VerificationService.GenerateServiceBusEmailRequest() :: {ex.Message}");
         }
         return null!;
 
