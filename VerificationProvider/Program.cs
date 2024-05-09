@@ -15,6 +15,7 @@ var host = new HostBuilder()
         services.AddDbContext<DataContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("SqlServer")));
         services.AddScoped<IVerificationService, VerificationService>();
         services.AddScoped<IVerificationCleanerService, VerificationCleanerService>();
+        services.AddScoped<IValidateVerificationCodeService, ValidateVerificationCodeService>();
     })
     .Build();
 
@@ -22,7 +23,7 @@ var host = new HostBuilder()
 //Update-Database när vi har Environment.GetEnvironmnetVariable
 using (var scope = host.Services.CreateScope())
 {
-  try
+    try
     {
         var context = scope.ServiceProvider.GetRequiredService<DataContext>();
         var migration = context.Database.GetPendingMigrations();
