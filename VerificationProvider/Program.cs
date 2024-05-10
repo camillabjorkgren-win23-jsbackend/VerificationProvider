@@ -1,5 +1,3 @@
-using Google.Protobuf.WellKnownTypes;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,3 +38,4 @@ using (var scope = host.Services.CreateScope())
     }
 }
 
+host.Run();
