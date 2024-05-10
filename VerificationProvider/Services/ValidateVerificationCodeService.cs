@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using VerificationProvider.Data.Context;
-using VerificationProvider.Functions;
 using VerificationProvider.Models;
 
 namespace VerificationProvider.Services;
