@@ -64,7 +64,7 @@ public class GenereteVerificationCodeHTTP
             }
             catch (Exception ex)
             {
-                _logger.LogError($"ERROR : GenerateVerificationCode.Run() :: {ex.Message}");
+                _logger.LogError($"ERROR : GenereteVerificationCodeHTTP.Run() :: {ex.Message}");
             }
         return null!;
     }
