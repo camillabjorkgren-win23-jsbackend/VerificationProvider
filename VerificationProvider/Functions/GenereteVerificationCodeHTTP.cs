@@ -67,7 +67,7 @@ public class GenereteVerificationCodeHTTP
                                         }
                                         catch (Exception ex)
                                         {
-                                            _logger.LogError($"ERROR : GenereteVerificationCodeHTTP.Run() :: {ex.Message}");
+                                            _logger.LogError($"ERROR : GenerateServiceBusEmailRequest.Run() :: {ex.Message}");
                                         }
 
                                     }
@@ -76,20 +76,20 @@ public class GenereteVerificationCodeHTTP
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogError($"ERROR : GenereteVerificationCodeHTTP.Run() :: {ex.Message}");
+                            _logger.LogError($"ERROR : GenerateCode.Run() :: {ex.Message}");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError($"ERROR : GenereteVerificationCodeHTTP.Run() :: {ex.Message}");
+                    _logger.LogError($"ERROR : DeserializeObject.Run() :: {ex.Message}");
                 }
 
             }
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GenereteVerificationCodeHTTP.Run() :: {ex.Message}");
+            _logger.LogError($"ERROR : StreamReader.Run() :: {ex.Message}");
         }
 
         return null!;
