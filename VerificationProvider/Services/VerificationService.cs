@@ -1,4 +1,5 @@
 ﻿using Azure.Messaging.ServiceBus;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,7 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
             {
                 existingRequest.Code = code;
                 existingRequest.ExpiryDate = DateTime.Now.AddMinutes(5);
-                context.Entry(existingRequest).State = EntityState.Modified;
+                context.Entry(existingRequest).CurrentValues.SetValues(code);
             }
             else
             {
