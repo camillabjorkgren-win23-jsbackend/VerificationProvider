@@ -1,5 +1,4 @@
 ﻿using Azure.Messaging.ServiceBus;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -12,6 +11,40 @@ public class VerificationService(ILogger<VerificationService> logger, IServicePr
 {
     private readonly ILogger<VerificationService> _logger = logger;
     private readonly IServiceProvider _serviceProvider = serviceProvider;
+
+    public EmailRequest GenerateEmailRequestWhenNewUser()
+    {
+        var emailRequest = new EmailRequest()
+        {
+            To = "camilla_bjorkgren@hotmail.com",
+            Subject ="New User has been registred on Silicon Blazor Project",
+            HtmlBody = $@"
+                        <html lang ='en'>
+                            <head> 
+                            <meta charset='UTF-8'>
+                            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                            <title>Silicon Website of Camilla Bjorkgren</title>
+                            </head>
+                        <body>
+                            <div style='color:#191919; max-width:500px'>
+                                <div style='background-color: #4F85F6; color: white; text-align: center; padding: 20px 0;'>
+                                    <h1 style='font-weight: 400;'>Verification Code</h1>
+                                </div>
+                                <div style='background-color: #f4f4f4; padding: 1rem 2rem;'>
+                                    <p> Dear Camilla,</p>
+                                    <p> A new user has been registred in Silicon Blazor Project.</p> 
+                                </div>
+                            <div style='color: #191919; text-align:center; font-size: 11px;'>
+                                <p> Silicon, Sveavägen 1, SE-123 45 Stockholm, Sweden</p>
+                            </div>
+                        </div>
+                    </body>
+                </html>
+                        ",
+            PlainText ="A new user has been registred in Silicon Blazor Project. This email can not receive replies. For more information, call the Silicon Help Center"
+        };
+        return emailRequest;
+    }
 
     public async Task<bool> SaveVerificationRequest(VerificationRequest verificationRequest, string code)
     {
